@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pregnancy</title>
+
+    <!-- ΤΟ ΔΙΚΟ ΣΟΥ ΕΙΚΟΝΙΔΙΟ (logo.png) ΓΙΑ ΤΟ ΚΙΝΗΤΟ -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    
+    <!-- Ρυθμίσεις για να φαίνεται σαν κανονική εφαρμογή -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        body { 
+            margin: 0; 
+            background: #fdf2f2; /* Απαλό ροζ φόντο που ταιριάζει με το logo σου */
+            color: #4a4a4a; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container { 
+            width: 90%; 
+            max-width: 400px; 
+            text-align: center; 
+            padding: 30px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+        
+        .logo-img { 
+            width: 160px; 
+            border-radius: 35px; 
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.2);
+        }
+
+        h2 { 
+            font-weight: 400; 
+            color: #ff9a9e; 
+            margin-bottom: 35px;
+            font-size: 1.5em;
+        }
+
+        .main-btn { 
+            display: block; 
+            padding: 22px; 
+            text-decoration: none; 
+            color: white !important; 
+            font-weight: bold; 
+            border-radius: 25px; 
+            font-size: 1.1em; 
+            text-align: center;
+            /* Gradient χρώματα που ταιριάζουν με το logo */
+            background: linear-gradient(45deg, #fbc2eb 0%, #a6c1ee 100%);
+            box-shadow: 0 6px 20px rgba(251, 194, 235, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .main-btn:active { 
+            transform: scale(0.95); 
+            box-shadow: 0 2px 10px rgba(251, 194, 235, 0.2);
+        }
+
+        p { font-size: 0.9em; color: #a0a0a0; margin-top: 25px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Εμφάνιση του logo.png -->
+        <img src="logo.png" class="logo-img" alt="MyPregnancyGuide Logo">
+        
+        <h2>Καλώς ήρθες, Αφροδίτη!</h2>
+        
+        <!-- ΤΟ ΚΟΥΜΠΙ ΠΟΥ ΟΔΗΓΕΙ ΣΤΟ STREAMLIT -->
+        <a href="https://afroditi-app-cgr623mnfnnshsrwxcbczj.streamlit.app" class="main-btn">
+            🌸 ΕΙΣΟΔΟΣ ΣΤΗΝ ΕΦΑΡΜΟΓΗ
+        </a>
+        
+        <p>MyPregnancyGuide v1.0</p>
+    </div>
+
+</body>
+</html>
+
+
