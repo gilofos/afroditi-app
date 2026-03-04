@@ -5,7 +5,7 @@ import pandas as pd
 # --- ΡΥΘΜΙΣΗ ΣΕΛΙΔΑΣ ---
 st.set_page_config(
    page_title="Afroditi App",
-   page_icon="logo.png",
+   page_icon="https://raw.githubusercontent.com/gilofos/afroditi-app/main/logo.png",
     layout="wide"
 )
 
@@ -181,4 +181,5 @@ if last_period:
 st.write("---")
 
 st.caption("© 2026 MyPregnancyGuide")
+
 
