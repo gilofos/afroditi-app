@@ -4,8 +4,8 @@ import pandas as pd
 
 # --- ΡΥΘΜΙΣΗ ΣΕΛΙΔΑΣ ---
 st.set_page_config(
-    page_title="MyPregnancyGuide", 
-    page_icon="🤰", 
+   page_title="Afroditi App",
+   page_icon="❤️",
     layout="wide"
 )
 
@@ -179,4 +179,5 @@ if last_period:
 
 # --- FOOTER ---
 st.write("---")
+
 st.caption("© 2026 MyPregnancyGuide")
