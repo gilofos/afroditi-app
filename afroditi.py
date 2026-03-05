@@ -47,8 +47,7 @@ with st.sidebar:
         st.info("Εδώ θα εμφανιστεί το logo.png")
     
     st.header("📍 Ρυθμίσεις")
-    last_period = st.date_input("Τελευταία Περίοδος (LMP):", datetime.date(2025, 10, 1))
-    st.write("---")
+    last_period = st.date_input("Τελευταία Περίοδος (LMP):", datetime.date.today())
     st.subheader("💧 Hydration Tracker")
     glasses = st.slider("Ποτήρια νερό σήμερα:", 0, 12, 4)
 
@@ -181,5 +180,6 @@ if last_period:
 st.write("---")
 
 st.caption("© 2026 MyPregnancyGuide")
+
 
 
