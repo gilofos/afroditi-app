@@ -47,7 +47,14 @@ with st.sidebar:
         st.info("Εδώ θα εμφανιστεί το logo.png")
     
     st.header("📍 Ρυθμίσεις")
-    last_period = st.date_input("Τελευταία Περίοδος (LMP):", datetime.date.today(), label_visibility="visible")
+    # ΔΙΟΡΘΩΣΗ ΗΜΕΡΟΛΟΓΙΟΥ: Προσθήκη min/max για να εμφανιστούν Dropdowns Μήνα/Έτους
+    last_period = st.date_input(
+        "Τελευταία Περίοδος (LMP):", 
+        datetime.date.today(), 
+        min_value=datetime.date(2024, 1, 1), 
+        max_value=datetime.date(2026, 12, 31),
+        label_visibility="visible"
+    )
     st.subheader("💧 Hydration Tracker")
     glasses = st.slider("Ποτήρια νερό σήμερα:", 0, 12, 4)
 
@@ -82,9 +89,9 @@ if last_period:
     days = (today - last_period).days % 7
     remaining = (edd - today).days
 
-    # --- TABS ---
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
-        "📊 Πρόοδος", "📸 Journal", "🧪 Υγεία", "🎒 Βαλίτσα", "💖 Ονόματα", "📅 Ραντεβού", "⚙️ Εργαλεία"
+    # --- TABS (Προστέθηκε το tab8 για την αναφορά) ---
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+        "📊 Πρόοδος", "📸 Journal", "🧪 Υγεία", "🎒 Βαλίτσα", "💖 Ονόματα", "📅 Ραντεβού", "⚙️ Εργαλεία", "📋 Αναφορά"
     ])
 
     with tab1:
@@ -176,11 +183,21 @@ if last_period:
             if st.button("Έναρξη Μέτρησης"):
                 st.warning(f"Καταγραφή: {datetime.datetime.now().strftime('%H:%M:%S')}")
 
+    with tab8:
+        # ΜΕΤΑΦΟΡΑ ΑΝΑΦΟΡΑΣ: Τώρα το κουμπί είναι μέσα στην εφαρμογή
+        st.subheader("📋 Αναφορά για τον Γιατρό")
+        st.info("Πατήστε το κουμπί για να δημιουργήσετε την αναφορά με τα τρέχοντα στοιχεία σας.")
+        if st.button("Δημιουργία Αναφοράς 📄"):
+            st.success(f"Η αναφορά ετοιμάστηκε για την ημερομηνία: {datetime.date.today().strftime('%d/%m/%Y')}")
+            st.markdown(f"""
+            **ΣΤΟΙΧΕΙΑ ΕΓΚΥΜΟΣΥΝΗΣ:**
+            - **Τελευταία Περίοδος:** {last_period.strftime('%d/%m/%Y')}
+            - **Εβδομάδα:** {weeks}η + {days} ημέρες
+            - **Πιθανή Ημ/νία Τοκετού:** {edd.strftime('%d/%m/%Y')}
+            - **Τρέχον Βάρος:** {weight} kg
+            - **Επίπεδο Σιδήρου:** {iron}
+            """)
+
 # --- FOOTER ---
 st.write("---")
-
 st.caption("© 2026 MyPregnancyGuide")
-
-
-
-
