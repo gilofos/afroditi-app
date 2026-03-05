@@ -1,6 +1,6 @@
 {
   "name": "My Pregnancy Guide",
-  "short_name": "Afroditi",
+  "short_name": "MyPregnancyGuide",
   "description": "Η εφαρμογή της Αφροδίτης",
   "start_url": "index.html",
   "display": "standalone",
