@@ -82,6 +82,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# ΤΟ ΠΑΛΙΟ ΚΟΥΜΠΙ "ΑΝΑΦΟΡΑ ΓΙΑ ΤΟΝ ΓΙΑΤΡΟ" ΔΙΑΓΡΑΦΗΚΕ ΑΠΟ ΕΔΩ
+
 if last_period:
     today = datetime.date.today()
     edd = last_period + datetime.timedelta(days=280)
@@ -89,7 +91,7 @@ if last_period:
     days = (today - last_period).days % 7
     remaining = (edd - today).days
 
-    # --- TABS (Προστέθηκε το tab8 για την αναφορά) ---
+    # --- TABS (Το tab8 είναι η νέα θέση της αναφοράς) ---
     tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
         "📊 Πρόοδος", "📸 Journal", "🧪 Υγεία", "🎒 Βαλίτσα", "💖 Ονόματα", "📅 Ραντεβού", "⚙️ Εργαλεία", "📋 Αναφορά"
     ])
@@ -184,19 +186,23 @@ if last_period:
                 st.warning(f"Καταγραφή: {datetime.datetime.now().strftime('%H:%M:%S')}")
 
     with tab8:
-        # ΜΕΤΑΦΟΡΑ ΑΝΑΦΟΡΑΣ: Τώρα το κουμπί είναι μέσα στην εφαρμογή
+        # Η ΝΕΑ ΘΕΣΗ ΤΗΣ ΑΝΑΦΟΡΑΣ: Εδώ τα δεδομένα δεν χάνονται!
         st.subheader("📋 Αναφορά για τον Γιατρό")
-        st.info("Πατήστε το κουμπί για να δημιουργήσετε την αναφορά με τα τρέχοντα στοιχεία σας.")
-        if st.button("Δημιουργία Αναφοράς 📄"):
-            st.success(f"Η αναφορά ετοιμάστηκε για την ημερομηνία: {datetime.date.today().strftime('%d/%m/%Y')}")
+        st.info("Πατήστε το κουμπί για να δείτε την αναφορά με τα στοιχεία που έχετε συμπληρώσει.")
+        if st.button("Προβολή Αναφοράς 📄"):
+            st.success(f"Η αναφορά δημιουργήθηκε επιτυχώς!")
             st.markdown(f"""
-            **ΣΤΟΙΧΕΙΑ ΕΓΚΥΜΟΣΥΝΗΣ:**
-            - **Τελευταία Περίοδος:** {last_period.strftime('%d/%m/%Y')}
-            - **Εβδομάδα:** {weeks}η + {days} ημέρες
-            - **Πιθανή Ημ/νία Τοκετού:** {edd.strftime('%d/%m/%Y')}
-            - **Τρέχον Βάρος:** {weight} kg
-            - **Επίπεδο Σιδήρου:** {iron}
-            """)
+            <div style="background-color: white; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                <h3 style="color: #7b1fa2; text-align: center;">ΑΝΑΦΟΡΑ ΕΓΚΥΜΟΣΥΝΗΣ</h3>
+                <hr>
+                <p><b>Ημερομηνία Αναφοράς:</b> {datetime.date.today().strftime('%d/%m/%Y')}</p>
+                <p><b>Τελευταία Περίοδος:</b> {last_period.strftime('%d/%m/%Y')}</p>
+                <p><b>Στάδιο Εγκυμοσύνης:</b> Εβδομάδα {weeks}η + {days} ημέρες</p>
+                <p><b>Πιθανή Ημ/νία Τοκετού:</b> {edd.strftime('%d/%m/%Y')}</p>
+                <p><b>Τρέχον Βάρος:</b> {weight} kg</p>
+                <p><b>Τιμή Σιδήρου:</b> {iron}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # --- FOOTER ---
 st.write("---")
