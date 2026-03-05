@@ -1,7 +1,7 @@
 {
   "name": "My Pregnancy Guide",
   "short_name": "MyPregnancyGuide",
-  "description": "Η εφαρμογή της Αφροδίτης",
+  "description": "My Pregnancy Guide",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
