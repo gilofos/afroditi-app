@@ -166,7 +166,7 @@ if last_period:
             if 'kicks' not in st.session_state: st.session_state.kicks = 0
             col_k1, col_k2 = st.columns(2)
             with col_k1:
-                if st.button("Μόλις κλώτσησε! ✅"): st.session_state.kicks += 1
+                if st.button("Αισθάνθηκα μια κίνηση ✨"): st.session_state.kicks += 1
             with col_k2:
                 if st.button("Reset 🔄"): st.session_state.kicks = 0
             st.metric("Κινήσεις σήμερα", st.session_state.kicks)
@@ -196,3 +196,4 @@ if last_period:
 # --- FOOTER ---
 st.write("---")
 st.caption("© 2026 MyPregnancyGuide")
+
