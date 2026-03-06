@@ -3,10 +3,10 @@ import datetime
 import pandas as pd
 import random
 
-# --- ΡΥΘΜΙΣΗ ΣΕΛΙΔΑΣ ---
+# --- 1. ΡΥΘΜΙΣΗ ΣΕΛΙΔΑΣ ---
 st.set_page_config(page_title="MyPregnancyGuide 🌸", page_icon="🌸", layout="wide")
 
-# --- CUSTOM CSS ---
+# --- 2. CUSTOM CSS ---
 st.markdown("""
 <style>
 .stApp { background: linear-gradient(180deg, #f3e5f5 0%, #ffffff 100%); }
@@ -16,15 +16,15 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- INITIALIZE SESSION STATE ---
+# --- 3. INITIALIZE SESSION STATE ---
 if 'kicks' not in st.session_state: st.session_state.kicks = 0
 if 'water' not in st.session_state: st.session_state.water = 0
 if 'names' not in st.session_state: st.session_state.names = []
 if 'dates' not in st.session_state: st.session_state.dates = []
 
-# --- SIDEBAR ---
+# --- 4. SIDEBAR ---
 with st.sidebar:
-    # Χρήση του κανονικού logo από το GitHub σου
+    # Σωστό Logo από το GitHub
     st.image("https://raw.githubusercontent.com/gilofos/afroditi-app/main/logo.png", width=200)
     
     st.header("📍 Ρυθμίσεις")
@@ -35,14 +35,15 @@ with st.sidebar:
     with col_w1:
         if st.button("🥛 Ήπια!"): st.session_state.water += 1
     with col_w2:
+        # Διόρθωση: Κουμπί για μηδενισμό ποτηριών
         if st.button("🔄 Μηδενισμός"): st.session_state.water = 0
-    st.write(f"**Σύνολο:** {st.session_state.water} ποτήρια")
+    st.write(f"**Σήμερα:** {st.session_state.water} ποτήρια")
 
-# --- ΚΑΛΩΣΟΡΙΣΜΑ & ΚΟΜΨΟ ΑΝΙΜΑΤΙΟΝ ---
+# --- 5. ΚΑΛΩΣΟΡΙΣΜΑ ---
 st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
 col_anim, col_txt = st.columns([1, 4])
 with col_anim:
-    # Κομψό animation καρδιάς (όχι παιδικό)
+    # Διακριτικό animation καρδιάς αντί για Simpson
     st.markdown('<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF3bmZ6ZzR0bmZ6ZzR0bmZ6ZzR0bmZ6ZzR0bmZ6ZzR0JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3o7TKVUn7iM8FMEU24/giphy.gif" width="100">', unsafe_allow_html=True)
 with col_txt:
     st.markdown('<h1 style="color: #7b1fa2;">🌸 MyPregnancyGuide</h1>', unsafe_allow_html=True)
@@ -60,37 +61,6 @@ if last_period:
     tips = ["Πιες νερό! 💧", "Περπάτημα στη φύση! 🌿", "Άκουσε μουσική! 🎵", "Χαλάρωσε ✨"]
     st.success(f"**💡 Συμβουλή:** {random.choice(tips)}")
 
-    # --- TABS ΜΕ ΟΛΟ ΤΟ ΠΕΡΙΕΧΟΜΕΝΟ ---
+    # --- 6. TABS ΜΕ ΟΛΟ ΤΟ ΠΕΡΙΕΧΟΜΕΝΟ ---
     tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
-        "📊 Πρόοδος", "📸 Journal", "🧪 Υγεία", "🎒 Βαλίτσα", "💖 Ονόματα", "📅 Ραντεβού", "⚙️ Εργαλεία", "📋 Αναφορά"
-    ])
-
-    with tab1: # ΠΡΟΟΔΟΣ
-        col_f1, col_f2 = st.columns([2, 1])
-        with col_f1:
-            st.markdown(f"""<div class="card">
-                <h3>📈 Εβδομάδα {weeks}η + {days} ημέρες</h3>
-                <p style="font-size:18px;">Μένουν <b>{remaining}</b> ημέρες για τη συνάντηση!</p>
-                <p>Πιθανή Ημερομηνία Τοκετού: <b>{edd.strftime('%d/%m/%Y')}</b></p>
-            </div>""", unsafe_allow_html=True)
-            
-            if weeks < 13: fruit = "🍋 Λεμόνι"
-            elif weeks < 28: fruit = "🍎 Μήλο"
-            else: fruit = "🍉 Καρπούζι"
-            st.info(f"Το μωρό σου έχει το μέγεθος από ένα **{fruit}**!")
-        with col_f2:
-            st.subheader("🔗 Σεμινάρια")
-            st.markdown('<a href="https://www.youtube.com/watch?v=kYI9U8XyW04" target="_blank" class="link-button">🍼 Θηλασμός</a>', unsafe_allow_html=True)
-
-    with tab2: # JOURNAL
-        st.subheader("📸 Η εξέλιξη της κοιλιάς σου")
-        st.file_uploader("Ανέβασε τη φωτογραφία της εβδομάδας", type=["jpg","png", "jpeg"])
-
-    with tab3: # ΥΓΕΙΑ
-        st.subheader("🧪 Μετρήσεις & Συμπτώματα")
-        weight = st.number_input("Βάρος (kg):", 40.0, 150.0, 65.0)
-        st.multiselect("Πώς νιώθεις σήμερα;", ["Ενέργεια ⚡", "Λιγούρες 🍏", "Κούραση 😴", "Ηρεμία 🧘"])
-
-    with tab4: # ΒΑΛΙΤΣΑ
-        st.subheader("🎒 Checklist Βαλίτσας Μαιευτηρίου")
-        st.checkbox("
+        "📊 Πρόοδος", "📸 Journal", "🧪 Υγεία", "🎒
